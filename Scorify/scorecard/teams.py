@@ -21,7 +21,9 @@ def storeData(obj):
       
     # Its important to use binary mode 
     dbfile = open('examplePickle', 'wb') 
-      
+    s_obj = serializers.serialize("json", [obj]) # convert object to json format          
+    obj2 = ScoreCardModel.objects.create(data=s_obj)
+    obj2.save()
     # source, destination 
     pickle.dump(db, dbfile)                      
     dbfile.close() 
