@@ -20,4 +20,6 @@ from Scorify import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='scorecard'),
+    path('scorecard/',views.getData,name='scorecard'),
+
 ]

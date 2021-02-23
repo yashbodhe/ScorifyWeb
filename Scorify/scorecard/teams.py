@@ -1,10 +1,10 @@
 import pickle 
 class Team:
     def __init__(self):
-        self.teamname ="team1"
-        self.score =100
-        self.wicket=3
-        self.overs=4
+        self.teamname ="Team RED"
+        self.score =0
+        self.wicket=0
+        self.overs=0
 
 def createTeam():
     t=Team()
@@ -19,7 +19,7 @@ def storeData(obj):
     db['team1'] = obj 
       
     # Its important to use binary mode 
-    dbfile = open('examplePickle', 'wb')       
+    dbfile = open('localDB', 'wb')       
     # source, destination 
     pickle.dump(db, dbfile)   
                    
@@ -27,7 +27,7 @@ def storeData(obj):
   
 def loadData(): 
     # for reading also binary mode is important 
-    dbfile = open('examplePickle', 'rb')      
+    dbfile = open('localDB', 'rb')      
     db = pickle.load(dbfile) 
     teamObj=db['team1'] 
     dbfile.close() 
