@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from Scorify.scorecard.teams import *
 from Scorify.teams import *
 def index(request):
 	teamObj=createTeam()
