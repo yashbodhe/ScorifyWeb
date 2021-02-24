@@ -1,16 +1,4 @@
 import pickle 
-class Team:
-    def __init__(self):
-        self.teamname ="Team RED"
-        self.score =0
-        self.wicket=0
-        self.balls=0
-        self.overs="0.0"
-
-def createTeam():
-    t=Team()
-    return t
-
   
 def storeData(obj): 
     # initializing data to be stored in db 
@@ -33,8 +21,3 @@ def loadData():
     teamObj=db['team1'] 
     dbfile.close() 
     return teamObj
-
-def updateOvers():
-    obj=loadData()
-    obj.overs=str(obj.balls//6)+"."+str(obj.balls%6)
-    storeData(obj)

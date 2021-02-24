@@ -12,7 +12,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
       <div class="container-fluid">
-        <a class="navbar-brand mb-0 h1" href="#">Scorify</a>
+        <a class="navbar-brand mb-0 h1" href="/">Scorify</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,60 +34,45 @@
     </nav>
     <br>
     <div class="container">
-      <div class="card text-center "style="width: 25rem;">
-        <div class="card-header">
-          <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">{{team.teamname}}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Team BLUE</a>
-            </li>
-          </ul>
-        </div>
-        <div class="card-body">
-          <h2>{{team.score}} - {{team.wicket}}</h2>
-          <h3>{{team.overs}}</h3>
-        </div>
-      </div>
-      <br>
-      <div class="card" style="width: 25rem;">
-          <div class="btn-group-vertical m-4" role="group" aria-label="Basic example">
-            <div class="btn-group">
-              <form  action="{% url 'scorecard' %}" method="post" style="width: 40rem;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='one'>1</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='two'>2</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='three'>3</button>
-              </form>
+      <div class="card p-5" style="width: 30rem;">
+        <form action="/init_scorecard/" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="team1" class="form-label">Team 1</label>
+            <input type="text" class="form-control" name="team1" id="team1">
+          </div>
+          <div class="mb-3">
+            <label for="team2" class="form-label">Team 2</label>
+            <input type="text" class="form-control" name="team2" id="team2">
+          </div>
+          Bat First : 
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="inlineRadio1">Team 1</label>
+            <input class="form-check-input" type="radio" name="toss" id="inlineRadio1" value="team1">
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="inlineRadio2">Team 2</label>
+            <input class="form-check-input" type="radio" name="toss" id="inlineRadio2" value="team2"> 
+          </div>
+          <br>
+          <br>
+          <div class="row g-3 align-items-center">
+            <div class="col-auto">
+              <label for="overs" class="col-form-label">Overs</label>
             </div>
+            <div class="col-auto">
+              <input type="number" class="form-control" id="overs" name="overs" min="1" max="90">
+            </div>
+            <div class="col-auto">
+              <span id="overs" class="form-text">
+                Must be between 1-90 overs.
+              </span>
+            </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-dark">StartMatch</button>
+        </form>
 
-            <div class="btn-group">
-              <form  action="{% url 'scorecard' %}" method="post" style="width: 40rem;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='four'>Four</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='six'>Six</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='five'>5</button>
-              </form>
-            </div>
-
-            <div class="btn-group">
-              <form  action="{% url 'scorecard' %}" method="post" style="width: 30rem;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='wide'>Wide</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='dot'>Dot</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='wicket'>Wicket</button>
-              </form>
-            </div>
-            <div class="btn-group">
-              <form  action="{% url 'scorecard' %}" method="post" style="width: 30rem;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='nb'>NB</button>
-                <button type="submit" formaction='/' class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='clear'>CLEAR</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='undo'>UNDO</button>
-              </form>
-            </div>
-        </div>
       </div>
     </div>
 

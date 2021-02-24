@@ -1,64 +1,43 @@
-from Scorify.scorecard.teams import *
+from Scorify.scorecard.handleDB import *
 
-def incre_By_One():
+def updateData(input_value):
+	if input_value=="one":
+		incre_By_Score(run=1,ball=1,wicket=0)
+	elif input_value=="two":
+		incre_By_Score(run=2,ball=1,wicket=0)
+	elif input_value=="three":
+		incre_By_Score(run=3,ball=1,wicket=0)
+	elif input_value=="four":
+		incre_By_Score(run=4,ball=1,wicket=0)
+	elif input_value=="six":
+		incre_By_Score(run=6,ball=1,wicket=0)
+	elif input_value=="five":
+		incre_By_Score(run=5,ball=1,wicket=0)
+	elif input_value=="wide":
+		incre_By_Score(run=1,ball=0,wicket=0)
+	elif input_value=="dot":
+		incre_By_Score(run=0,ball=1,wicket=0)
+	elif input_value=="wicket":
+		incre_By_Score(run=0,ball=1,wicket=1)
+	elif input_value=="nb":
+		incre_By_Score(run=1,ball=0,wicket=0)
+	elif input_value=="undo":
+		UNDO()
+
+def updateOvers():
+    obj=loadData()
+    obj.overs=str(obj.balls//6)+"."+str(obj.balls%6)
+    storeData(obj)
+
+def incre_By_Score(run=0,ball=0,wicket=0):
 	obj=loadData()
-	obj.score+=1
-	obj.balls+=1
+	obj.score+=run
+	obj.balls+=ball
+	obj.wicket+=wicket
 	storeData(obj)
 	updateOvers()
-def incre_By_Two():
-	obj=loadData()
-	obj.score+=2
-	obj.balls+=1
-	storeData(obj)
-	updateOvers()
-def incre_By_Three():
-	obj=loadData()
-	obj.score+=3
-	obj.balls+=1
-	storeData(obj)
-	updateOvers()
-def incre_By_Four():
-	obj=loadData()
-	obj.score+=4
-	obj.balls+=1
-	storeData(obj)
-	updateOvers()
-def incre_By_Six():
-	obj=loadData()
-	obj.score+=6
-	obj.balls+=1
-	storeData(obj)
-	updateOvers()
-def incre_By_Five():
-	obj=loadData()
-	obj.score+=5
-	obj.balls+=1
-	storeData(obj)
-	updateOvers()
-def incre_By_Wide():
-	obj=loadData()
-	obj.score+=1
-	storeData(obj)
-	updateOvers()
-def incre_By_Dot():
-	obj=loadData()
-	obj.score+=0
-	obj.balls+=1
-	storeData(obj)
-	updateOvers()
-def incre_By_Wicket():
-	obj=loadData()
-	obj.wicket+=1
-	obj.balls+=1
-	storeData(obj)
-	updateOvers()
-def incre_By_NB():
-	obj=loadData()
-	obj.score+=1
-	storeData(obj)
-	updateOvers()
-def incre_By_UNDO():
+	
+def UNDO():
 	obj=loadData()
 	obj.score+=0
 	storeData(obj)
