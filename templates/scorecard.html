@@ -37,23 +37,43 @@
       <div class="card text-center "style="width: 25rem;">
         <nav class="p-2">
           <div class="nav nav-pills" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">{{team.teamname}}</button>
-            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Team BLUE</button>
+            {% if match.flag %}
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">{{ match.team1.0 }}</button>
+              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">{{ match.team2.0 }}</button>
+            {% else %}
+              <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">{{ match.team1.0 }}</button>
+              <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">{{ match.team2.0 }}</button>
+            {% endif %}
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
+          {% if match.flag %}
           <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <div class="card-body">
-              <h2>{{team.score}} - {{team.wicket}}</h2>
-              <h3>{{team.overs}}</h3>
+              <h2>{{ match.team1.1 }} - {{ match.team1.2 }}</h2>
+              <h3>{{ match.team1.4 }}</h3>
             </div>
           </div>
           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="card-body">
-              <h2>{{team.score}} - {{team.wicket}}</h2>
-              <h3>{{team.overs}}</h3>
+              <h2>Yet to Bat</h2>
+              <h3>&nbsp;</h3>
             </div>
           </div>
+          {% else %}
+          <div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="card-body">
+              <h2>{{ match.team1.1 }} - {{ match.team1.2 }}</h2>
+              <h3>{{ match.team1.4 }}</h3>
+            </div>
+          </div>
+          <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="card-body">
+              <h2>{{ match.team2.1 }} - {{ match.team2.2 }}</h2>
+              <h3>{{ match.team2.4 }}</h3>
+            </div>
+          </div>
+          {% endif %}
         </div>
       </div>
       <br>

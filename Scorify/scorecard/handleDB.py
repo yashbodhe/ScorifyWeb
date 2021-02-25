@@ -5,7 +5,7 @@ def storeData(obj):
     
     # database 
     db = {} 
-    db['team1'] = obj 
+    db['match'] = obj 
       
     # Its important to use binary mode 
     dbfile = open('localDB', 'wb')       
@@ -18,6 +18,6 @@ def loadData():
     # for reading also binary mode is important 
     dbfile = open('localDB', 'rb')      
     db = pickle.load(dbfile) 
-    teamObj=db['team1'] 
+    teamObj=db['match'] 
     dbfile.close() 
     return teamObj

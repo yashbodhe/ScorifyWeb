@@ -1,4 +1,5 @@
 from Scorify.scorecard.handleDB import *
+from Scorify.scorecard.handleTeams import *
 
 def updateData(input_value):
 	if input_value=="one":
@@ -25,20 +26,26 @@ def updateData(input_value):
 		UNDO()
 
 def updateOvers():
-    obj=loadData()
-    obj.overs=str(obj.balls//6)+"."+str(obj.balls%6)
-    storeData(obj)
+    match=loadData()
+    if match.flag:
+    	match.team1[4]=str(match.team1[3]//6)+"."+str(match.team1[3]%6)
+    else:
+    	match.team2[4]=str(match.team2[3]//6)+"."+str(match.team2[3]%6)
+    match=check_innOver(match)
+    storeData(match)
 
 def incre_By_Score(run=0,ball=0,wicket=0):
-	obj=loadData()
-	obj.score+=run
-	obj.balls+=ball
-	obj.wicket+=wicket
-	storeData(obj)
+	match=loadData()
+	if match.flag:
+		match.team1[1]+=run
+		match.team1[2]+=wicket
+		match.team1[3]+=ball
+	else:
+		match.team2[1]+=run
+		match.team2[2]+=wicket
+		match.team2[3]+=ball
+	storeData(match)
 	updateOvers()
 	
 def UNDO():
-	obj=loadData()
-	obj.score+=0
-	storeData(obj)
-	updateOvers()
+	pass
