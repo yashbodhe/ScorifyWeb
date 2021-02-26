@@ -6,6 +6,9 @@ from django.http import HttpResponse
 def index(request):
 	return render(request,'index.html')
 
+def matchDetails(request):
+	return render(request,'matchDetails.html')
+
 def initScore(request):
 	teamObj=createTeam()
 	
