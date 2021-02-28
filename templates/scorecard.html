@@ -29,12 +29,12 @@
         </form>
       </div>
     </nav>
-    <div class="container-fluid mw-100  m-0 p-0" style="height: 100px;">
-    <img src="https://static01.nyt.com/images/2021/01/20/world/19India-cricket-print/19India-cricket1-videoSixteenByNineJumbo1600.jpg" class="mw-100 m-0 ">
-    </div>
+    <!--<div class="container-fluid mw-100  m-0 p-0" style="height: 100px;">
+    <img src="https://static01.nyt.com/images/2021/01/20/world/19India-cricket-print/19India-cricket1-videoSixteenByNineJumbo1600.jpg" class="mw-100 m-0 opacity-2" style="opacity: 0.4;">
+    </div>-->
     <br>
     <div class="container">
-      <div class="card text-center "style="width: 25rem; background-color: rgba(245, 245, 245, 0.9); ">
+      <div class="card text-center "style="width: 25rem; background-color: rgba(255, 255, 255, 0.9); ">
         <nav class="p-2">
           <div class="nav nav-pills" id="nav-tab" role="tablist">
             {% if match.flag %}
@@ -46,75 +46,78 @@
             {% endif %}
           </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent">
-          {% if match.flag %}
-          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <div class="card-body">
-              <h2>{{ match.team1.1 }} - {{ match.team1.2 }}</h2>
-              <h3>{{ match.team1.4 }}</h3>
+        
+          <div class="tab-content" id="nav-tabContent">
+            {% if match.flag %}
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="card-body">
+                <h2>{{ match.team1.1 }} - {{ match.team1.2 }}</h2>
+                <h3>{{ match.team1.4 }}</h3>
+              </div>
             </div>
-          </div>
-          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="card-body">
-              <h2>Yet to Bat</h2>
-              <h3>&nbsp;</h3>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <div class="card-body">
+                <h2>Yet to Bat</h2>
+                <h3>&nbsp;</h3>
+              </div>
             </div>
-          </div>
-          {% else %}
-          <div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <div class="card-body">
-              <h2>{{ match.team1.1 }} - {{ match.team1.2 }}</h2>
-              <h3>{{ match.team1.4 }}</h3>
+            {% else %}
+            <div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="card-body">
+                <h2>{{ match.team1.1 }} - {{ match.team1.2 }}</h2>
+                <h3>{{ match.team1.4 }}</h3>
+              </div>
             </div>
-          </div>
-          <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="card-body">
-              <h2>{{ match.team2.1 }} - {{ match.team2.2 }}</h2>
-              <h3>{{ match.team2.4 }}</h3>
+            <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <div class="card-body">
+                <h2>{{ match.team2.1 }} - {{ match.team2.2 }}</h2>
+                <h3>{{ match.team2.4 }}</h3>
+              </div>
             </div>
+            {% endif %}
           </div>
-          {% endif %}
         </div>
-      </div>
-      <br>
-      <div class="card" style="width: 25rem; background-color: rgba(245, 245, 245, 1); ">
-          <div class="btn-group-vertical m-4" role="group" aria-label="Basic example">
-            <div class="btn-group">
-              <form  action="{% url 'scorecard' %}" method="post" style="width: 40rem;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='one'>1</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='two'>2</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='three'>3</button>
-              </form>
-            </div>
+        <br>
+      
+        <div class="card" style="width: 25rem; background-color: rgba(255, 255, 255, 1); ">
+            <div class="btn-group-vertical m-4" role="group" aria-label="Basic example">
+              <div class="btn-group">
+                <form  action="{% url 'scorecard' %}" method="post" style="width: 25rem;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='one'>1</button>
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='two'>2</button>
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='three'>3</button>
+                </form>
+              </div>
 
-            <div class="btn-group">
-              <form  action="{% url 'scorecard' %}" method="post" style="width: 40rem;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='four'>Four</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='six'>Six</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='five'>5</button>
-              </form>
-            </div>
+              <div class="btn-group">
+                <form  action="{% url 'scorecard' %}" method="post" style="width: 25rem;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='four'>Four</button>
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='six'>Six</button>
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='five'>5</button>
+                </form>
+              </div>
 
-            <div class="btn-group">
-              <form  action="{% url 'scorecard' %}" method="post" style="width: 30rem;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='wide'>Wide</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='dot'>Dot</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='wicket'>Wicket</button>
-              </form>
-            </div>
-            <div class="btn-group">
-              <form  action="{% url 'scorecard' %}" method="post" style="width: 30rem;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='nb'>NB</button>
-                <button type="submit" formaction='/' class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='clear'>CLEAR</button>
-                <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='undo'>UNDO</button>
-              </form>
-            </div>
+              <div class="btn-group">
+                <form  action="{% url 'scorecard' %}" method="post" style="width: 25rem;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='wide'>Wide</button>
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='dot'>Dot</button>
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='wicket'>Wicket</button>
+                </form>
+              </div>
+              <div class="btn-group">
+                <form  action="{% url 'scorecard' %}" method="post" style="width: 25rem;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='nb'>NB</button>
+                  <button type="submit" formaction='/' class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='clear'>CLEAR</button>
+                  <button type="submit" class="btn btn-outline-secondary w-25 py-3 " name='inputValue' value='undo'>UNDO</button>
+                </form>
+              </div>
+          </div>
         </div>
-      </div>
+        
     </div>
 
 

@@ -23,4 +23,5 @@ urlpatterns = [
     path('init_scorecard/',views.initScore,name='init_scorecard'),
     path('scorecard/',views.getData,name='scorecard'),
     path('match_details/',views.matchDetails,name='match_details'),
+    path('toss/',views.toss,name='toss'),
 ]

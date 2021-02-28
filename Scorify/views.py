@@ -2,9 +2,17 @@ from django.shortcuts import render
 from Scorify.scorecard.handleTeams import *
 from Scorify.scorecard.updateScorecard import *
 from django.http import HttpResponse
+import random
 
 def index(request):
-	return render(request,'index.html')
+	params={"toss":False, "win":None}
+	return render(request,'index.html',params)
+
+def toss(request):
+	opt = ["Team 1 won the Toss","Team 2 won the Toss"]
+	win=random.choice(opt)
+	params={"toss":True, "win":win}
+	return render(request,'index.html',params)
 
 def matchDetails(request):
 	return render(request,'matchDetails.html')
